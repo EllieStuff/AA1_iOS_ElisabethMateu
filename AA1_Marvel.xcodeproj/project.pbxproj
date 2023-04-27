@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B050900829FAC6EC00A3AC7E /* MovieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B050900729FAC6EC00A3AC7E /* MovieCell.swift */; };
+		B050900A29FAE55D00A3AC7E /* MyImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B050900929FAE55D00A3AC7E /* MyImageView.swift */; };
 		B0B6866029F1A44E00A56445 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B6865F29F1A44E00A56445 /* AppDelegate.swift */; };
 		B0B6866229F1A44E00A56445 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B6866129F1A44E00A56445 /* SceneDelegate.swift */; };
 		B0B6866429F1A44E00A56445 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B6866329F1A44E00A56445 /* ViewController.swift */; };
@@ -16,6 +18,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B050900729FAC6EC00A3AC7E /* MovieCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCell.swift; sourceTree = "<group>"; };
+		B050900929FAE55D00A3AC7E /* MyImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyImageView.swift; sourceTree = "<group>"; };
 		B0B6865C29F1A44E00A56445 /* AA1_Marvel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AA1_Marvel.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0B6865F29F1A44E00A56445 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B0B6866129F1A44E00A56445 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -59,6 +63,8 @@
 				B0B6865F29F1A44E00A56445 /* AppDelegate.swift */,
 				B0B6866129F1A44E00A56445 /* SceneDelegate.swift */,
 				B0B6866329F1A44E00A56445 /* ViewController.swift */,
+				B050900929FAE55D00A3AC7E /* MyImageView.swift */,
+				B050900729FAC6EC00A3AC7E /* MovieCell.swift */,
 				B0B6866529F1A44E00A56445 /* Main.storyboard */,
 				B0B6866829F1A44F00A56445 /* Assets.xcassets */,
 				B0B6866A29F1A44F00A56445 /* LaunchScreen.storyboard */,
@@ -138,8 +144,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B050900A29FAE55D00A3AC7E /* MyImageView.swift in Sources */,
 				B0B6866429F1A44E00A56445 /* ViewController.swift in Sources */,
 				B0B6866029F1A44E00A56445 /* AppDelegate.swift in Sources */,
+				B050900829FAC6EC00A3AC7E /* MovieCell.swift in Sources */,
 				B0B6866229F1A44E00A56445 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
