@@ -32,7 +32,7 @@ class HeroesListVC: UIViewController, UITableViewDataSource, UITableViewDelegate
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "MovieCell") as? MovieCell else
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "HeroeCell") as? HeroeCell else
         {
             return UITableViewCell()
         }
@@ -67,25 +67,35 @@ class HeroesListVC: UIViewController, UITableViewDataSource, UITableViewDelegate
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         if let heroDetailVC = storyboard.instantiateViewController(withIdentifier: "HeroDetail") as? HeroDetailVC {
             heroDetailVC.CurrHero = heroesLoaded[indexPath.row]
+            
+            ///Si se pone esta linea la pantalla ocupara toda la pantalla
+            //heroDetailVC.modalPresentationStyle = .overFullScreen
+            ///En caso de querer volver atras hay que poner un boton que llame la funcion dismissed
+            
+            
             self.present(heroDetailVC, animated: true)
         }
     }
     
     
     @IBAction func inputBegin(_ sender: Any) {
-        searchField.text = ""
+        if(searchField.text == "Search") { searchField.text = "" }
     }
     
     @IBAction func inputEnd(_ sender: Any) {
-        //heroesLoaded = []
         searchedText = self.searchField.text ?? ""
     }
     @IBAction func inputChange(_ sender: Any) {
-        //heroesLoaded = []
         searchedText = self.searchField.text ?? ""
-        //table.reloadData()
     }
     
+    @IBAction func searchBttnTouchUp(_ sender: Any) {
+        if(self.searchField.text == nil || self.searchField.text == "") { return }
+        
+        searchedText = self.searchField.text ?? ""
+        heroesLoaded = []
+        
+    }
     
 }
 
@@ -96,18 +106,77 @@ extension HeroesListVC {
         {
             GetHeroesInProgress = true;
             
-            do {
-                try ApiRepository.GetHeroes(offset: heroesLoaded.count, limit: 50) { heroes in
+            ApiRepository.GetHeroes(offset: heroesLoaded.count, limit: 30, filter: searchedText) { heroes in
+                self.GetHeroesInProgress = false;
+                ApiRepository.GetHeroes(offset: self.heroesLoaded.count, limit: 50) { heroes in
                     self.GetHeroesInProgress = false
                     self.heroesLoaded.insert(contentsOf: heroes, at: self.heroesLoaded.count)
                     self.table.reloadData()
+                } onError: { error in
+                    self.GetHeroesInProgress = false;
+                    debugPrint(error.error.rawValue)
                 }
-            } catch let error as ApiRepository.HeroError {
-                debugPrint((error.error))
+                
             }
-            catch {
-                debugPrint(error)
+            
+            /*ApiRepository.GetHeroes(offset: heroesLoaded.count, limit: 50) { heroes in
+                self.GetHeroesInProgress = false
+                self.heroesLoaded.insert(contentsOf: heroes, at: self.heroesLoaded.count)
+                self.table.reloadData()
+            }*/
+            
+        }
+    }
+    
+    func GetHeroesWithFilter(filter: String) {
+        if(!GetHeroesInProgress)
+        {
+            GetHeroesInProgress = true;
+            
+            ApiRepository.GetHeroes(offset: heroesLoaded.count, limit: 30) { heroes in
+                self.GetHeroesInProgress = false;
+                ApiRepository.GetHeroes(offset: self.heroesLoaded.count, limit: 50) { heroes in
+                    self.GetHeroesInProgress = false
+                    self.heroesLoaded.insert(contentsOf: heroes, at: self.heroesLoaded.count)
+                    self.table.reloadData()
+                } onError: { error in
+                    self.GetHeroesInProgress = false;
+                    debugPrint(error.error.rawValue)
+                }
+                
             }
+            
+            /*ApiRepository.GetHeroes(offset: heroesLoaded.count, limit: 50) { heroes in
+                self.GetHeroesInProgress = false
+                self.heroesLoaded.insert(contentsOf: heroes, at: self.heroesLoaded.count)
+                self.table.reloadData()
+            }*/
+            
+        }
+    }
+    
+    func GetComics(heroeName: String) {
+        ApiRepository.GetComics(heroreName: "3-D Man") { comics in
+            // ToDo
+        }
+            ApiRepository.GetHeroes(offset: heroesLoaded.count, limit: 30, filter: searchedText) { heroes in
+                ApiRepository.GetHeroes(offset: self.heroesLoaded.count, limit: 50) { heroes in
+                    self.GetHeroesInProgress = false
+                    self.heroesLoaded.insert(contentsOf: heroes, at: self.heroesLoaded.count)
+                    self.table.reloadData()
+                } onError: { error in
+                    self.GetHeroesInProgress = false;
+                    debugPrint(error.error.rawValue)
+                }
+                
+            }
+            
+            /*ApiRepository.GetHeroes(offset: heroesLoaded.count, limit: 50) { heroes in
+                self.GetHeroesInProgress = false
+                self.heroesLoaded.insert(contentsOf: heroes, at: self.heroesLoaded.count)
+                self.table.reloadData()
+            }*/
+            
         }
     }
     

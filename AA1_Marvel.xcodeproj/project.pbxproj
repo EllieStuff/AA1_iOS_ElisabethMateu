@@ -7,8 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B050900829FAC6EC00A3AC7E /* MovieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B050900729FAC6EC00A3AC7E /* MovieCell.swift */; };
+		B050900829FAC6EC00A3AC7E /* HeroeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B050900729FAC6EC00A3AC7E /* HeroeCell.swift */; };
 		B050900A29FAE55D00A3AC7E /* MyImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B050900929FAE55D00A3AC7E /* MyImageView.swift */; };
+		B05FDAB02A041B880097D064 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05FDAAF2A041B880097D064 /* View.swift */; };
+		B05FDAB22A0420300097D064 /* DataCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05FDAB12A0420300097D064 /* DataCell.swift */; };
 		B0B6866029F1A44E00A56445 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B6865F29F1A44E00A56445 /* AppDelegate.swift */; };
 		B0B6866229F1A44E00A56445 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B6866129F1A44E00A56445 /* SceneDelegate.swift */; };
 		B0B6866429F1A44E00A56445 /* HeroesListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B6866329F1A44E00A56445 /* HeroesListVC.swift */; };
@@ -21,8 +23,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		B050900729FAC6EC00A3AC7E /* MovieCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCell.swift; sourceTree = "<group>"; };
+		B050900729FAC6EC00A3AC7E /* HeroeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroeCell.swift; sourceTree = "<group>"; };
 		B050900929FAE55D00A3AC7E /* MyImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyImageView.swift; sourceTree = "<group>"; };
+		B05FDAAF2A041B880097D064 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
+		B05FDAB12A0420300097D064 /* DataCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataCell.swift; sourceTree = "<group>"; };
 		B0B6865C29F1A44E00A56445 /* AA1_Marvel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AA1_Marvel.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0B6865F29F1A44E00A56445 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B0B6866129F1A44E00A56445 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -47,6 +51,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B05FDAAE2A041B600097D064 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				B05FDAAF2A041B880097D064 /* View.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		B0B6865329F1A44E00A56445 = {
 			isa = PBXGroup;
 			children = (
@@ -66,6 +78,7 @@
 		B0B6865E29F1A44E00A56445 /* AA1_Marvel */ = {
 			isa = PBXGroup;
 			children = (
+				B05FDAAE2A041B600097D064 /* Extensions */,
 				B0CD772929FC3CDC00972E8D /* Models */,
 				B0CD772829FC3CBB00972E8D /* Components */,
 				B0CD772729FC3BD700972E8D /* Views */,
@@ -116,7 +129,8 @@
 		B0CD772A29FC3D0200972E8D /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				B050900729FAC6EC00A3AC7E /* MovieCell.swift */,
+				B050900729FAC6EC00A3AC7E /* HeroeCell.swift */,
+				B05FDAB12A0420300097D064 /* DataCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -204,9 +218,11 @@
 				B050900A29FAE55D00A3AC7E /* MyImageView.swift in Sources */,
 				B0B6866429F1A44E00A56445 /* HeroesListVC.swift in Sources */,
 				B0CD772529FC3B9400972E8D /* ApiRepo+Heroes.swift in Sources */,
+				B05FDAB22A0420300097D064 /* DataCell.swift in Sources */,
 				B0CD772329FC2D7A00972E8D /* ApiRepo.swift in Sources */,
 				B0B6866029F1A44E00A56445 /* AppDelegate.swift in Sources */,
-				B050900829FAC6EC00A3AC7E /* MovieCell.swift in Sources */,
+				B05FDAB02A041B880097D064 /* View.swift in Sources */,
+				B050900829FAC6EC00A3AC7E /* HeroeCell.swift in Sources */,
 				B0B6866229F1A44E00A56445 /* SceneDelegate.swift in Sources */,
 				B0CD772D29FC43F600972E8D /* HeroDetailVC.swift in Sources */,
 			);

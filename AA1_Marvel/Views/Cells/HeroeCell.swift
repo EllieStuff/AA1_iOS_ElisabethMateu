@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MovieCell: UITableViewCell {
+class HeroeCell: UITableViewCell {
 
     
     @IBOutlet weak var mImage: MyImageView!
