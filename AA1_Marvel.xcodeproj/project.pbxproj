@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B0391C8F2A05568600A7D450 /* MarvelRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0391C8E2A05568600A7D450 /* MarvelRepository.swift */; };
+		B0391C912A056DDC00A7D450 /* ApiRepo+Comics.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0391C902A056DDC00A7D450 /* ApiRepo+Comics.swift */; };
+		B0391C942A05731700A7D450 /* PageContainerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0391C932A05731700A7D450 /* PageContainerTest.swift */; };
+		B0391C962A057D8900A7D450 /* HeroComicsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0391C952A057D8900A7D450 /* HeroComicsVC.swift */; };
 		B050900829FAC6EC00A3AC7E /* HeroeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B050900729FAC6EC00A3AC7E /* HeroeCell.swift */; };
 		B050900A29FAE55D00A3AC7E /* MyImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B050900929FAE55D00A3AC7E /* MyImageView.swift */; };
 		B05FDAB02A041B880097D064 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05FDAAF2A041B880097D064 /* View.swift */; };
@@ -23,6 +27,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B0391C8E2A05568600A7D450 /* MarvelRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelRepository.swift; sourceTree = "<group>"; };
+		B0391C902A056DDC00A7D450 /* ApiRepo+Comics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ApiRepo+Comics.swift"; sourceTree = "<group>"; };
+		B0391C932A05731700A7D450 /* PageContainerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageContainerTest.swift; sourceTree = "<group>"; };
+		B0391C952A057D8900A7D450 /* HeroComicsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroComicsVC.swift; sourceTree = "<group>"; };
 		B050900729FAC6EC00A3AC7E /* HeroeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroeCell.swift; sourceTree = "<group>"; };
 		B050900929FAE55D00A3AC7E /* MyImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyImageView.swift; sourceTree = "<group>"; };
 		B05FDAAF2A041B880097D064 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
@@ -78,6 +86,7 @@
 		B0B6865E29F1A44E00A56445 /* AA1_Marvel */ = {
 			isa = PBXGroup;
 			children = (
+				B0391C932A05731700A7D450 /* PageContainerTest.swift */,
 				B05FDAAE2A041B600097D064 /* Extensions */,
 				B0CD772929FC3CDC00972E8D /* Models */,
 				B0CD772829FC3CBB00972E8D /* Components */,
@@ -97,6 +106,8 @@
 			isa = PBXGroup;
 			children = (
 				B0CD772429FC3B9400972E8D /* ApiRepo+Heroes.swift */,
+				B0391C902A056DDC00A7D450 /* ApiRepo+Comics.swift */,
+				B0391C8E2A05568600A7D450 /* MarvelRepository.swift */,
 				B0CD772229FC2D7A00972E8D /* ApiRepo.swift */,
 			);
 			path = RepositoryManager;
@@ -139,6 +150,7 @@
 			isa = PBXGroup;
 			children = (
 				B0B6866329F1A44E00A56445 /* HeroesListVC.swift */,
+				B0391C952A057D8900A7D450 /* HeroComicsVC.swift */,
 				B0CD772C29FC43F600972E8D /* HeroDetailVC.swift */,
 			);
 			path = VCS;
@@ -219,9 +231,13 @@
 				B0B6866429F1A44E00A56445 /* HeroesListVC.swift in Sources */,
 				B0CD772529FC3B9400972E8D /* ApiRepo+Heroes.swift in Sources */,
 				B05FDAB22A0420300097D064 /* DataCell.swift in Sources */,
+				B0391C962A057D8900A7D450 /* HeroComicsVC.swift in Sources */,
+				B0391C912A056DDC00A7D450 /* ApiRepo+Comics.swift in Sources */,
+				B0391C8F2A05568600A7D450 /* MarvelRepository.swift in Sources */,
 				B0CD772329FC2D7A00972E8D /* ApiRepo.swift in Sources */,
 				B0B6866029F1A44E00A56445 /* AppDelegate.swift in Sources */,
 				B05FDAB02A041B880097D064 /* View.swift in Sources */,
+				B0391C942A05731700A7D450 /* PageContainerTest.swift in Sources */,
 				B050900829FAC6EC00A3AC7E /* HeroeCell.swift in Sources */,
 				B0B6866229F1A44E00A56445 /* SceneDelegate.swift in Sources */,
 				B0CD772D29FC43F600972E8D /* HeroDetailVC.swift in Sources */,

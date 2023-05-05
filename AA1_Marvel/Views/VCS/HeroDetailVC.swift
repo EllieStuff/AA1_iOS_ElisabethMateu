@@ -8,33 +8,37 @@
 import Foundation
 import UIKit
 
-class HeroDetailVC: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+class HeroDetailVC: UIViewController {
     
     public var CurrHero: Hero?
-    @IBOutlet weak var collection: UICollectionView!
+    //@IBOutlet weak var collection: UICollectionView!
+    
+    //var comicsLoaded:
+    
+    var GetComicsInProgress: Bool = false
+    var GetSeriesInProgress: Bool = false
+    var GetStoriesInProgress: Bool = false
+    
+    @IBOutlet weak var heroeName: UILabel!
+    @IBOutlet weak var heroeImage: MyImageView!
+    @IBOutlet weak var heroeDescription: UITextView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        collection.dataSource = self
-        collection.delegate = self
-    }
-    
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collection.dequeueReusableCell(withReuseIdentifier: "DataCell", for: indexPath) as? DataCell else
-        {
-            return UICollectionViewCell()
+        heroeName.text = CurrHero?.name
+        heroeDescription.text = CurrHero?.description
+        if(heroeDescription.text == "") {
+            heroeDescription.text = "No description available."
+        }
+        if let imageUrl = CurrHero?.thumbnail?.Url {
+            heroeImage.SetImageAsync(url: imageUrl)
         }
         
+        //collection.dataSource = self
+        //collection.delegate = self
         
-        return cell
     }
-    
     
     
 }

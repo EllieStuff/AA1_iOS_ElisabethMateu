@@ -7,103 +7,60 @@
 
 import Foundation
 
-extension ApiRepository {
+extension MarvelRepository {
     
-    public struct HeroError: Error {
+    public struct HeroeError: Error {
         public enum HeroErrors: String {
             case CantCreateUrlWithString = "Can't create url with string"
             case CantCreateUrl = "Can't create url"
             case Unknown = "Unknown Error"
+            case CantParseData = "Can't Parse Data"
         }
         
         let error: HeroErrors
     }
     
-    static func GetHeroes(offset: Int = 0, limit: Int = 20, filter: String = "", onSuccess: @escaping ([Hero]) -> (), onError: @escaping (HeroError)->() = {_ in } )
+    func GetHeroes(offset: Int = 0, limit: Int = 20, filter: String = "", onSuccess: @escaping ([Hero]) -> (), onError: @escaping (HeroeError)->() = {_ in } )
     {
-        guard var urlComponents = BaseComponents else {
-            onError(HeroError(error: .CantCreateUrlWithString))
-            return
-        }
+        var marvelComponents = MarvelURLComponents()
         
-        urlComponents.queryItems?.append(URLQueryItem(name: "offset", value: String(offset)))
-        urlComponents.queryItems?.append(URLQueryItem(name: "limit", value: String(limit)))
-        
-        guard let url = urlComponents.url else {
-            onError(HeroError(error: .CantCreateUrl))
-            return
-        }
+        marvelComponents
+            .AddToPath(.Characters)
+            .AddOffset(offset: offset)
+            .AddLimit(limit: limit)
+        if(filter != "") { marvelComponents.AddFilter(filter: filter) }
         
         
-        var request = URLRequest(url: url)
-        request.httpMethod = "GET"
-        request.addValue("d39e81e4c5b9c338766dcf605bfe6501", forHTTPHeaderField: "apikey")
+        MarvelRepository.GetApiData(urlComponent: marvelComponents, onSuccess: onSuccess, onError: onError)
         
-        
-        let task = URLSession.shared.dataTask(with: request) { data, response, error in
-            if error != nil {
-                DispatchQueue.main.async {
-                    onError(HeroError(error: .Unknown))
-                }
-                return
-            }
-            
-            if let data = data {
-                
-                guard let heroesResponse = try? JSONDecoder().decode(HeroesResponse.self, from: data) else { return }
-                
-                DispatchQueue.main.async {
-                    onSuccess(heroesResponse.data.results)
-                }
-            
-            }
-        }
-            
-        task.resume()
-    }
-    
-    static func GetComics(heroreName: String, limit: Int = 20, onSuccess: @escaping ([Hero]) -> (), onError: @escaping (HeroError)->() = {_ in } )
-    {
-        guard var urlComponents = BaseComponents else {
-            onError(HeroError(error: .CantCreateUrlWithString))
-            return
-        }
-        
-        urlComponents.queryItems?.append(URLQueryItem(name: "characters", value: heroreName))
-        urlComponents.queryItems?.append(URLQueryItem(name: "limit", value: String(limit)))
-        
-        guard let url = urlComponents.url else {
-            onError(HeroError(error: .CantCreateUrl))
-            return
-        }
-        
-        
-        var request = URLRequest(url: url)
-        request.httpMethod = "GET"
-        request.addValue("d39e81e4c5b9c338766dcf605bfe6501", forHTTPHeaderField: "apikey")
-        
-        
-        let task = URLSession.shared.dataTask(with: request) { data, response, error in
-            if error != nil {
-                DispatchQueue.main.async {
-                    onError(HeroError(error: .Unknown))
-                }
-                return
-            }
-            
-            if let data = data {
-                
-                guard let heroesResponse = try? JSONDecoder().decode(HeroesResponse.self, from: data) else { return }
-                debugPrint(heroesResponse)
-                
-                DispatchQueue.main.async {
-                    onSuccess(heroesResponse.data.results)
-                }
-            
-            }
-        }
-            
-        task.resume()
     }
     
 }
+
+
+struct HeroesResponse: Decodable, Encodable {
+    let code: Int
+    let status: String
+    let data: HeroesData
+}
+
+struct HeroesData: Decodable, Encodable {
+    let results: [Hero]
+}
+
+struct Hero: Decodable, Encodable {
+    let id: Int
+    let name: String
+    let description: String
+    let thumbnail: Thumbnail?
+}
+
+struct Thumbnail : Codable {
+    let path: String
+    let `extension`: String
+    
+    var ImageUrl: String { get { return "\(path).\(`extension`)" } }
+    var Url: URL? { get { return URL(string: ImageUrl) } }
+}
+
+

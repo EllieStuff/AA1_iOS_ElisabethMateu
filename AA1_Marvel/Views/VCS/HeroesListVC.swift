@@ -83,17 +83,19 @@ class HeroesListVC: UIViewController, UITableViewDataSource, UITableViewDelegate
     }
     
     @IBAction func inputEnd(_ sender: Any) {
-        searchedText = self.searchField.text ?? ""
+        //searchedText = self.searchField.text ?? ""
     }
     @IBAction func inputChange(_ sender: Any) {
-        searchedText = self.searchField.text ?? ""
+        //searchedText = self.searchField.text ?? ""
     }
     
     @IBAction func searchBttnTouchUp(_ sender: Any) {
-        if(self.searchField.text == nil || self.searchField.text == "") { return }
+        if(self.searchField.text == nil) { return }
         
         searchedText = self.searchField.text ?? ""
         heroesLoaded = []
+        GetMoreHerores()
+        table.reloadData()
         
     }
     
@@ -106,78 +108,40 @@ extension HeroesListVC {
         {
             GetHeroesInProgress = true;
             
-            ApiRepository.GetHeroes(offset: heroesLoaded.count, limit: 30, filter: searchedText) { heroes in
-                self.GetHeroesInProgress = false;
-                ApiRepository.GetHeroes(offset: self.heroesLoaded.count, limit: 50) { heroes in
-                    self.GetHeroesInProgress = false
-                    self.heroesLoaded.insert(contentsOf: heroes, at: self.heroesLoaded.count)
-                    self.table.reloadData()
-                } onError: { error in
-                    self.GetHeroesInProgress = false;
-                    debugPrint(error.error.rawValue)
-                }
-                
-            }
-            
-            /*ApiRepository.GetHeroes(offset: heroesLoaded.count, limit: 50) { heroes in
+            /*Api.Marvel.GetHeroes(offset: heroesLoaded.count, limit: 30, filter: searchedText) { heroes in
                 self.GetHeroesInProgress = false
                 self.heroesLoaded.insert(contentsOf: heroes, at: self.heroesLoaded.count)
                 self.table.reloadData()
+            } onError: { error in
+                self.GetHeroesInProgress = false;
+                debugPrint(error.error.rawValue)
             }*/
+            
+            Api.Marvel.GetHeroes(offset: heroesLoaded.count, limit: 30, filter: searchedText, onSuccess: OnSucces, onError: OnError)
             
         }
     }
     
-    func GetHeroesWithFilter(filter: String) {
-        if(!GetHeroesInProgress)
-        {
-            GetHeroesInProgress = true;
-            
-            ApiRepository.GetHeroes(offset: heroesLoaded.count, limit: 30) { heroes in
-                self.GetHeroesInProgress = false;
-                ApiRepository.GetHeroes(offset: self.heroesLoaded.count, limit: 50) { heroes in
-                    self.GetHeroesInProgress = false
-                    self.heroesLoaded.insert(contentsOf: heroes, at: self.heroesLoaded.count)
-                    self.table.reloadData()
-                } onError: { error in
-                    self.GetHeroesInProgress = false;
-                    debugPrint(error.error.rawValue)
-                }
-                
-            }
-            
-            /*ApiRepository.GetHeroes(offset: heroesLoaded.count, limit: 50) { heroes in
-                self.GetHeroesInProgress = false
-                self.heroesLoaded.insert(contentsOf: heroes, at: self.heroesLoaded.count)
-                self.table.reloadData()
-            }*/
-            
-        }
+    func OnSucces(heroes: [Hero]) {
+        self.GetHeroesInProgress = false
+        self.heroesLoaded.insert(contentsOf: heroes, at: self.heroesLoaded.count)
+        self.table.reloadData()
     }
     
-    func GetComics(heroeName: String) {
-        ApiRepository.GetComics(heroreName: "3-D Man") { comics in
-            // ToDo
-        }
-            ApiRepository.GetHeroes(offset: heroesLoaded.count, limit: 30, filter: searchedText) { heroes in
-                ApiRepository.GetHeroes(offset: self.heroesLoaded.count, limit: 50) { heroes in
-                    self.GetHeroesInProgress = false
-                    self.heroesLoaded.insert(contentsOf: heroes, at: self.heroesLoaded.count)
-                    self.table.reloadData()
-                } onError: { error in
-                    self.GetHeroesInProgress = false;
-                    debugPrint(error.error.rawValue)
-                }
-                
-            }
-            
-            /*ApiRepository.GetHeroes(offset: heroesLoaded.count, limit: 50) { heroes in
-                self.GetHeroesInProgress = false
-                self.heroesLoaded.insert(contentsOf: heroes, at: self.heroesLoaded.count)
-                self.table.reloadData()
-            }*/
-            
-        }
+    func OnError(error: MarvelRepository.HeroeError) {
+        self.GetHeroesInProgress = false;
+        debugPrint(error.error.rawValue)
+        
+        /*switch(error.error) {
+        case .CantCreateUrlWithString:
+            <#code#>
+        case .CantCreateUrl:
+            <#code#>
+        case .Unknown:
+            <#code#>
+        case .CantParseData:
+            <#code#>
+        }*/
     }
     
 }
