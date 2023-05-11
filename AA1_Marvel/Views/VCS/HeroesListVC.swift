@@ -63,10 +63,10 @@ class HeroesListVC: UIViewController, UITableViewDataSource, UITableViewDelegate
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        debugPrint("Hero selected => \(heroesLoaded[indexPath.row].name)")
+        //debugPrint("Hero selected => \(heroesLoaded[indexPath.row].name)")
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         if let heroDetailVC = storyboard.instantiateViewController(withIdentifier: "HeroDetail") as? HeroDetailVC {
-            heroDetailVC.CurrHero = heroesLoaded[indexPath.row]
+            HeroDetailVC.CurrHero = heroesLoaded[indexPath.row]
             
             ///Si se pone esta linea la pantalla ocupara toda la pantalla
             //heroDetailVC.modalPresentationStyle = .overFullScreen
@@ -128,7 +128,7 @@ extension HeroesListVC {
         self.table.reloadData()
     }
     
-    func OnError(error: MarvelRepository.HeroeError) {
+    func OnError(error: MarvelRepository.HeroError) {
         self.GetHeroesInProgress = false;
         debugPrint(error.error.rawValue)
         

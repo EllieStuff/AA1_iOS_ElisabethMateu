@@ -1,18 +1,19 @@
 //
-//  HeroContentVC.swift
+//  HeroStoriesVC.swift
 //  AA1_Marvel
 //
-//  Created by elisabeth.mateu@enti.cat on 5/5/23.
+//  Created by elisabeth.mateu@enti.cat on 11/5/23.
 //
 
 import UIKit
 
-class HeroComicsVC: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+class HeroStoriesVC: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
 
-    var GetComicsInProgress: Bool = false
-    var comicsLoaded: [MarvelRepository.HeroesContent] = []
+    var GetStoriesInProgress: Bool = false
+    var storiesLoaded: [MarvelRepository.HeroesContent] = []
     
     @IBOutlet weak var collection: UICollectionView!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,13 +21,13 @@ class HeroComicsVC: UIViewController, UICollectionViewDataSource, UICollectionVi
         collection.dataSource = self
         collection.delegate = self
         
-        GetMoreComics()
+        GetMoreStories()
         
     }
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return comicsLoaded.count
+        return storiesLoaded.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -36,14 +37,14 @@ class HeroComicsVC: UIViewController, UICollectionViewDataSource, UICollectionVi
         }
         
         
-        cell.title.text = comicsLoaded[indexPath.row].title
-        if let imageUrl = self.comicsLoaded[indexPath.row].thumbnail?.Url {
+        cell.title.text = storiesLoaded[indexPath.row].title
+        if let imageUrl = self.storiesLoaded[indexPath.row].thumbnail?.Url {
             cell.mImage.SetImageAsync(url: imageUrl)
         }
         
-        if(indexPath.row + 5 >= comicsLoaded.count)
+        if(indexPath.row + 5 >= storiesLoaded.count)
         {
-            GetMoreComics()
+            GetMoreStories()
         }
         
         
@@ -53,24 +54,22 @@ class HeroComicsVC: UIViewController, UICollectionViewDataSource, UICollectionVi
 }
 
 
-extension HeroComicsVC {
-    func GetMoreComics() {
-        if(!GetComicsInProgress)
+extension HeroStoriesVC {
+    func GetMoreStories() {
+        if(!GetStoriesInProgress)
         {
-            GetComicsInProgress = true;
+            GetStoriesInProgress = true;
             
-            Api.Marvel.GetComics(offset: 3, limit: 30, characterId: HeroDetailVC.CurrHero?.id ?? 0) { comics in
-                debugPrint(comics)
-                self.GetComicsInProgress = false
-                self.comicsLoaded.insert(contentsOf: comics, at: self.comicsLoaded.count)
+            Api.Marvel.GetStories(offset: 3, limit: 30, characterId: HeroDetailVC.CurrHero?.id ?? 0) { stories in
+                debugPrint(stories)
+                self.GetStoriesInProgress = false
+                self.storiesLoaded.insert(contentsOf: stories, at: self.storiesLoaded.count)
                 self.collection.reloadData()
             } onError: { error in
-                self.GetComicsInProgress = false;
+                self.GetStoriesInProgress = false;
                 debugPrint(error.error.rawValue)
             }
             
         }
     }
-    
 }
-

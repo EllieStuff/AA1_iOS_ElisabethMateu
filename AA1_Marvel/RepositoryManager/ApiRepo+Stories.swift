@@ -1,21 +1,21 @@
 //
-//  ApiRepo+Comics.swift
+//  ApiRepo+Stories.swift
 //  AA1_Marvel
 //
-//  Created by elisabeth.mateu@enti.cat on 5/5/23.
+//  Created by elisabeth.mateu@enti.cat on 11/5/23.
 //
 
 import Foundation
 
 extension MarvelRepository {
     
-    func GetComics(offset: Int = 0, limit: Int = 20, characterId: Int, onSuccess: @escaping ([HeroesContent]) -> (), onError: @escaping (HeroError)->() = {_ in } )
+    func GetStories(offset: Int = 0, limit: Int = 20, characterId: Int, onSuccess: @escaping ([HeroesContent]) -> (), onError: @escaping (HeroError)->() = {_ in } )
     {
         debugPrint("Character Id: " + String(characterId))
         var marvelComponents = MarvelURLComponents()
         
         marvelComponents
-            .AddToPath(.Comics)
+            .AddToPath(.Stories)
             .AddOffset(offset: offset)
             .AddLimit(limit: limit)
             .AddCharacterId(characterId: characterId)
@@ -39,13 +39,13 @@ extension MarvelRepository {
             }
             
             if let data = data , let jsonStr = String(data:data, encoding: .utf8){
-                debugPrint("Comics Response:")
+                debugPrint("Stories Response:")
                 //debugPrint(jsonStr)
                 
                 var jsonDict = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
                 debugPrint(jsonDict)
                 
-                guard let comicsResponse = try? JSONDecoder().decode(HeroesContentResponse.self, from: data) else {
+                guard let storiesResponse = try? JSONDecoder().decode(HeroesContentResponse.self, from: data) else {
                     DispatchQueue.main.async {
                         onError(HeroError(error: .CantParseData))
                     }
@@ -55,7 +55,7 @@ extension MarvelRepository {
                 DispatchQueue.main.async {
                     //debugPrint("Heroes Response:")
                     //debugPrint(heroesResponse.data.results)
-                    onSuccess(comicsResponse.data.results)
+                    onSuccess(storiesResponse.data.results)
                 }
             
             }
@@ -64,5 +64,7 @@ extension MarvelRepository {
         task.resume()
         
     }
+
     
 }
+

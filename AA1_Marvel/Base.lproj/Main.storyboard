@@ -243,7 +243,7 @@
                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0pZ-2W-VDM">
                                         <rect key="frame" x="10" y="50" width="353" height="369"/>
                                         <connections>
-                                            <segue destination="zca-8X-qys" kind="embed" id="V83-ZO-2eL"/>
+                                            <segue destination="zca-8X-qys" kind="embed" identifier="OpenPager" id="V83-ZO-2eL"/>
                                         </connections>
                                     </containerView>
                                 </subviews>
@@ -281,10 +281,10 @@
             </objects>
             <point key="canvasLocation" x="971.7557251908396" y="-18.30985915492958"/>
         </scene>
-        <!--Pager Container Test-->
+        <!--Pager Container-->
         <scene sceneID="h7E-Yv-UAm">
             <objects>
-                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="zca-8X-qys" customClass="PagerContainerTest" customModule="AA1_Marvel" customModuleProvider="target" sceneMemberID="viewController">
+                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="zca-8X-qys" customClass="PagerContainer" customModule="AA1_Marvel" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="oc8-U3-ZNd"/>
                 </pageViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gjH-GB-HtA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -317,12 +317,11 @@
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="XMG-bH-M8H" customClass="MyImageView" customModule="AA1_Marvel" customModuleProvider="target">
                                                     <rect key="frame" x="20" y="10" width="70" height="70"/>
-                                                    <color key="backgroundColor" systemColor="opaqueSeparatorColor"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="XMG-bH-M8H" secondAttribute="height" multiplier="1:1" id="5Lk-vE-efB"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="taA-Sf-4wK">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="taA-Sf-4wK" userLabel="Title">
                                                     <rect key="frame" x="5" y="85" width="100" height="20"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="25" id="T8b-mm-Okl"/>
@@ -344,6 +343,10 @@
                                             </constraints>
                                         </collectionViewCellContentView>
                                         <size key="customSize" width="110" height="110"/>
+                                        <connections>
+                                            <outlet property="mImage" destination="XMG-bH-M8H" id="OnP-w6-DPq"/>
+                                            <outlet property="title" destination="taA-Sf-4wK" id="mD9-ri-X1j"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
@@ -365,10 +368,10 @@
             </objects>
             <point key="canvasLocation" x="1059" y="-748"/>
         </scene>
-        <!--View Controller-->
+        <!--Hero SeriesVC-->
         <scene sceneID="Ggk-CZ-fqF">
             <objects>
-                <viewController storyboardIdentifier="Series" id="QHb-3o-aLt" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Series" id="QHb-3o-aLt" customClass="HeroSeriesVC" customModule="AA1_Marvel" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="uB1-ha-YeP">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -391,12 +394,11 @@
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="oKi-AO-Mi4" customClass="MyImageView" customModule="AA1_Marvel" customModuleProvider="target">
                                                     <rect key="frame" x="20" y="10" width="70" height="70"/>
-                                                    <color key="backgroundColor" systemColor="opaqueSeparatorColor"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="oKi-AO-Mi4" secondAttribute="height" multiplier="1:1" id="uuE-R4-Ilw"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Vt-LA-FAv">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Vt-LA-FAv" userLabel="Title">
                                                     <rect key="frame" x="5" y="85" width="100" height="20"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="100" id="Ih2-iO-xJX"/>
@@ -418,6 +420,10 @@
                                             </constraints>
                                         </collectionViewCellContentView>
                                         <size key="customSize" width="110" height="110"/>
+                                        <connections>
+                                            <outlet property="mImage" destination="oKi-AO-Mi4" id="pfb-rl-xbO"/>
+                                            <outlet property="title" destination="0Vt-LA-FAv" id="kSb-n0-Muk"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
@@ -431,15 +437,18 @@
                             <constraint firstItem="MlK-ak-yuq" firstAttribute="bottom" secondItem="BEX-gO-PIN" secondAttribute="bottom" id="pMI-TB-X37"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="collection" destination="MlK-ak-yuq" id="8c6-me-SyZ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="V3Z-mA-aCo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1819" y="-764"/>
         </scene>
-        <!--View Controller-->
+        <!--Hero StoriesVC-->
         <scene sceneID="q4e-1j-96c">
             <objects>
-                <viewController storyboardIdentifier="Stories" id="mdW-V7-wCj" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Stories" id="mdW-V7-wCj" customClass="HeroStoriesVC" customModule="AA1_Marvel" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="96d-dR-4Se">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -462,7 +471,6 @@
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="f4S-9n-3im" customClass="MyImageView" customModule="AA1_Marvel" customModuleProvider="target">
                                                     <rect key="frame" x="20" y="10" width="70" height="70"/>
-                                                    <color key="backgroundColor" systemColor="opaqueSeparatorColor"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="f4S-9n-3im" secondAttribute="height" multiplier="1:1" id="5Ta-q4-5FZ"/>
                                                     </constraints>
@@ -489,6 +497,10 @@
                                             </constraints>
                                         </collectionViewCellContentView>
                                         <size key="customSize" width="110" height="110"/>
+                                        <connections>
+                                            <outlet property="mImage" destination="f4S-9n-3im" id="kT1-57-2Un"/>
+                                            <outlet property="title" destination="DF7-6v-ik8" id="931-ZO-q5M"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
@@ -502,6 +514,9 @@
                             <constraint firstItem="OIP-61-1Kr" firstAttribute="leading" secondItem="wMk-qB-Hgc" secondAttribute="leading" id="uev-4n-fPi"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="collection" destination="OIP-61-1Kr" id="aJJ-1s-Dbt"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e5M-Lr-DBH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -512,9 +527,6 @@
         <image name="magnifyingglass" catalog="system" width="128" height="117"/>
         <systemColor name="labelColor">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="opaqueSeparatorColor">
-            <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="secondarySystemBackgroundColor">
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

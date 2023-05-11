@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class PagerContainerTest : UIPageViewController {
+class PagerContainer : UIPageViewController {
     
     var vcs: [UIViewController] = []
     
@@ -31,7 +31,7 @@ class PagerContainerTest : UIPageViewController {
 }
 
 
-extension PagerContainerTest: UIPageViewControllerDataSource, UIPageViewControllerDelegate {
+extension PagerContainer: UIPageViewControllerDataSource, UIPageViewControllerDelegate {
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
         guard let idx = vcs.firstIndex(of: viewController) else {

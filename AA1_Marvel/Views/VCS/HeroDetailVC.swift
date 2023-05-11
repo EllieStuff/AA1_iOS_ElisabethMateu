@@ -10,7 +10,7 @@ import UIKit
 
 class HeroDetailVC: UIViewController {
     
-    public var CurrHero: Hero?
+    public static var CurrHero: Hero?
     //@IBOutlet weak var collection: UICollectionView!
     
     //var comicsLoaded:
@@ -26,12 +26,12 @@ class HeroDetailVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        heroeName.text = CurrHero?.name
-        heroeDescription.text = CurrHero?.description
+        heroeName.text = HeroDetailVC.CurrHero?.name
+        heroeDescription.text = HeroDetailVC.CurrHero?.description
         if(heroeDescription.text == "") {
             heroeDescription.text = "No description available."
         }
-        if let imageUrl = CurrHero?.thumbnail?.Url {
+        if let imageUrl = HeroDetailVC.CurrHero?.thumbnail?.Url {
             heroeImage.SetImageAsync(url: imageUrl)
         }
         
@@ -40,5 +40,11 @@ class HeroDetailVC: UIViewController {
         
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        debugPrint(segue.identifier)
+        if let pager = segue.destination as? PagerContainer {
+            let i = 1
+        }
+    }
     
 }

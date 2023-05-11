@@ -8,32 +8,40 @@
 import Foundation
 
 class MarvelRepository {
-    static func GetApiData(urlComponent: MarvelURLComponents, onSuccess: @escaping ([Hero]) -> (), onError: @escaping (HeroeError)->() = {_ in } ) {
+    /*static func GetApiData<T: Decodable>(urlComponent: MarvelURLComponents, onSuccess: @escaping ([T]) -> (), onError: @escaping (HeroError)->() = {_ in } ) {
         guard let url = urlComponent.Components.url else {
-            onError(HeroeError(error: .CantCreateUrl))
+            onError(HeroError(error: .CantCreateUrl))
             return
         }
         
         var request = URLRequest(url: url)
         
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            
             if error != nil {
                 DispatchQueue.main.async {
-                    onError(HeroeError(error: .Unknown))
+                    onError(HeroError(error: .Unknown))
                 }
                 return
             }
             
-            if let data = data {
+            if let data = data , let jsonStr = String(data:data, encoding: .utf8){
+                debugPrint("Heroes Response:")
+                //debugPrint(jsonStr)
+                
+                var jsonDict = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
+                debugPrint(jsonDict)
                 
                 guard let heroesResponse = try? JSONDecoder().decode(HeroesResponse.self, from: data) else {
                     DispatchQueue.main.async {
-                        onError(HeroeError(error: .CantParseData))
+                        onError(HeroError(error: .CantParseData))
                     }
                     return
                 }
                 
                 DispatchQueue.main.async {
+                    //debugPrint("Heroes Response:")
+                    //debugPrint(heroesResponse.data.results)
                     onSuccess(heroesResponse.data.results)
                 }
             
@@ -41,7 +49,7 @@ class MarvelRepository {
         }
             
         task.resume()
-    }
+    }*/
     
     public class MarvelURLComponents {
         
@@ -54,6 +62,8 @@ class MarvelRepository {
         enum SubPath: String {
             case Characters = "characters"
             case Comics = "comics"
+            case Series = "series"
+            case Stories = "stories"
         }
         
         init() {
@@ -94,11 +104,37 @@ class MarvelRepository {
             return self
         }
         
-        @discardableResult func AddComicCharacter(character: String) -> MarvelURLComponents  {
-            self.components?.queryItems?.append(URLQueryItem(name: "characters", value: character))
+        @discardableResult func AddCharacterId(characterId: Int) -> MarvelURLComponents  {
+            self.components?.queryItems?.append(URLQueryItem(name: "characters", value: String(characterId)))
             return self
         }
         
+        
+    }
+    
+    struct HeroesContentResponse: Codable {
+        let code: Int
+        let status: String
+        let data: HeroesContentData
+    }
+
+    struct HeroesContentData: Codable {
+        let results: [HeroesContent]
+    }
+
+    struct HeroesContent: Codable {
+        let id: Int
+        let title: String
+        let description: String?
+        let thumbnail: Thumbnail?
+    }
+    
+    struct Thumbnail : Codable {
+        let path: String
+        let `extension`: String
+        
+        var ImageUrl: String { get { return "\(path).\(`extension`)" } }
+        var Url: URL? { get { return URL(string: ImageUrl) } }
     }
 
 }
