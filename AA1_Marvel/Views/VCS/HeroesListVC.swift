@@ -12,6 +12,7 @@ class HeroesListVC: UIViewController, UITableViewDataSource, UITableViewDelegate
     var heroesLoaded: [Hero] = []
     var GetHeroesInProgress: Bool = false
     var searchedText: String = ""
+    var totalHeroes: Int = 0
     
     @IBOutlet weak var table: UITableView!
     @IBOutlet weak var searchField: UITextField!
@@ -50,7 +51,7 @@ class HeroesListVC: UIViewController, UITableViewDataSource, UITableViewDelegate
             cell.mImage.SetImageAsync(url: imageUrl)
         }
         
-        if(indexPath.row + 5 >= heroesLoaded.count)
+        if(heroesLoaded.count < totalHeroes && indexPath.row + 5 >= heroesLoaded.count)
         {
             GetMoreHerores()
         }
@@ -96,7 +97,6 @@ class HeroesListVC: UIViewController, UITableViewDataSource, UITableViewDelegate
         heroesLoaded = []
         GetMoreHerores()
         table.reloadData()
-        
     }
     
 }
@@ -122,10 +122,11 @@ extension HeroesListVC {
         }
     }
     
-    func OnSucces(heroes: [Hero]) {
+    func OnSucces(heroesData: HeroesData) {
         self.GetHeroesInProgress = false
-        self.heroesLoaded.insert(contentsOf: heroes, at: self.heroesLoaded.count)
-        self.table.reloadData()
+        self.totalHeroes = heroesData.total
+        self.heroesLoaded.insert(contentsOf: heroesData.results, at: self.heroesLoaded.count)
+        if(heroesLoaded.count > 0) { self.table.reloadData() }
     }
     
     func OnError(error: MarvelRepository.HeroError) {

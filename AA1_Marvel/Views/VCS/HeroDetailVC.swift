@@ -11,17 +11,12 @@ import UIKit
 class HeroDetailVC: UIViewController {
     
     public static var CurrHero: Hero?
-    //@IBOutlet weak var collection: UICollectionView!
-    
-    //var comicsLoaded:
-    
-    var GetComicsInProgress: Bool = false
-    var GetSeriesInProgress: Bool = false
-    var GetStoriesInProgress: Bool = false
     
     @IBOutlet weak var heroeName: UILabel!
     @IBOutlet weak var heroeImage: MyImageView!
     @IBOutlet weak var heroeDescription: UITextView!
+    
+    var pager: PagerContainer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,8 +38,22 @@ class HeroDetailVC: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         debugPrint(segue.identifier)
         if let pager = segue.destination as? PagerContainer {
-            let i = 1
+            self.pager = pager
         }
     }
+    
+    
+    @IBAction func setComicsView(_ sender: Any) {
+        self.pager?.SetComicsVC()
+    }
+    
+    @IBAction func setSeriesView(_ sender: Any) {
+        self.pager?.SetSeriesVC()
+    }
+    
+    @IBAction func setStoriesView(_ sender: Any) {
+        self.pager?.SetStoriesVC()
+    }
+    
     
 }

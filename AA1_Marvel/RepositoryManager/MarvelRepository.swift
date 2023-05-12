@@ -8,7 +8,7 @@
 import Foundation
 
 class MarvelRepository {
-    /*static func GetApiData<T: Decodable>(urlComponent: MarvelURLComponents, onSuccess: @escaping ([T]) -> (), onError: @escaping (HeroError)->() = {_ in } ) {
+    /*static func GetApiData<T: Decodable>(urlComponent: MarvelURLComponents, onSuccess: @escaping (T) -> (), onError: @escaping (HeroError)->() = {_ in } ) {
         guard let url = urlComponent.Components.url else {
             onError(HeroError(error: .CantCreateUrl))
             return
@@ -42,7 +42,7 @@ class MarvelRepository {
                 DispatchQueue.main.async {
                     //debugPrint("Heroes Response:")
                     //debugPrint(heroesResponse.data.results)
-                    onSuccess(heroesResponse.data.results)
+                    onSuccess(heroesResponse.data)
                 }
             
             }
@@ -120,6 +120,7 @@ class MarvelRepository {
 
     struct HeroesContentData: Codable {
         let results: [HeroesContent]
+        let total: Int
     }
 
     struct HeroesContent: Codable {

@@ -216,6 +216,9 @@
                                                         <real key="value" value="5"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="setComicsView:" destination="bUH-kv-YNJ" eventType="touchUpInside" id="yHf-Qy-JR4"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wVi-Ze-lNC">
                                                 <rect key="frame" x="125" y="0.0" width="100.66666666666669" height="30"/>
@@ -227,9 +230,12 @@
                                                         <real key="value" value="5"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="setSeriesView:" destination="bUH-kv-YNJ" eventType="touchUpInside" id="Xbq-cg-JNc"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rRK-7D-VGf">
-                                                <rect key="frame" x="235.66666666666663" y="0.0" width="117.33333333333334" height="30"/>
+                                                <rect key="frame" x="235.66666666666666" y="0.0" width="117.33333333333334" height="30"/>
                                                 <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" title="Stories"/>
@@ -238,6 +244,9 @@
                                                         <real key="value" value="5"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="setStoriesView:" destination="bUH-kv-YNJ" eventType="touchUpInside" id="lcl-cd-dRA"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <constraints>

@@ -62,4 +62,21 @@ extension PagerContainer: UIPageViewControllerDataSource, UIPageViewControllerDe
     }
     
     
+    func SetComicsVC()
+    {
+        self.setViewControllers([vcs[0]], direction: .forward, animated: true)
+        //var comicsView:HeroComicsVC? = vcs[0] as? HeroComicsVC
+        //comicsView?.HeroComicsVC()
+    }
+        
+    func SetSeriesVC()
+    {
+        self.setViewControllers([vcs[1]], direction: .forward, animated: true)
+    }
+    
+    func SetStoriesVC()
+    {
+        self.setViewControllers([vcs[2]], direction: .forward, animated: true)
+    }
+    
 }

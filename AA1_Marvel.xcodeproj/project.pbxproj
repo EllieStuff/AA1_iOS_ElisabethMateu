@@ -24,7 +24,6 @@
 		B0CD772329FC2D7A00972E8D /* ApiRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CD772229FC2D7A00972E8D /* ApiRepo.swift */; };
 		B0CD772529FC3B9400972E8D /* ApiRepo+Heroes.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CD772429FC3B9400972E8D /* ApiRepo+Heroes.swift */; };
 		B0CD772D29FC43F600972E8D /* HeroDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CD772C29FC43F600972E8D /* HeroDetailVC.swift */; };
-		B0E6BCEC2A0D317E0040C5FA /* HeroesDetailPagerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E6BCEB2A0D317E0040C5FA /* HeroesDetailPagerVC.swift */; };
 		B0E6BCEE2A0D5A740040C5FA /* HeroSeriesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E6BCED2A0D5A740040C5FA /* HeroSeriesVC.swift */; };
 		B0E6BCF02A0D5B580040C5FA /* ApiRepo+Series.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E6BCEF2A0D5B580040C5FA /* ApiRepo+Series.swift */; };
 		B0E6BCF22A0D662A0040C5FA /* ApiRepo+Stories.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E6BCF12A0D662A0040C5FA /* ApiRepo+Stories.swift */; };
@@ -51,7 +50,6 @@
 		B0CD772229FC2D7A00972E8D /* ApiRepo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiRepo.swift; sourceTree = "<group>"; };
 		B0CD772429FC3B9400972E8D /* ApiRepo+Heroes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ApiRepo+Heroes.swift"; sourceTree = "<group>"; };
 		B0CD772C29FC43F600972E8D /* HeroDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroDetailVC.swift; sourceTree = "<group>"; };
-		B0E6BCEB2A0D317E0040C5FA /* HeroesDetailPagerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroesDetailPagerVC.swift; sourceTree = "<group>"; };
 		B0E6BCED2A0D5A740040C5FA /* HeroSeriesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroSeriesVC.swift; sourceTree = "<group>"; };
 		B0E6BCEF2A0D5B580040C5FA /* ApiRepo+Series.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ApiRepo+Series.swift"; sourceTree = "<group>"; };
 		B0E6BCF12A0D662A0040C5FA /* ApiRepo+Stories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ApiRepo+Stories.swift"; sourceTree = "<group>"; };
@@ -75,6 +73,14 @@
 				B05FDAAF2A041B880097D064 /* View.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		B086016D2A0E8D9400459609 /* PagerContainers */ = {
+			isa = PBXGroup;
+			children = (
+				B0391C932A05731700A7D450 /* PagerContainer.swift */,
+			);
+			path = PagerContainers;
 			sourceTree = "<group>";
 		};
 		B0B6865329F1A44E00A56445 = {
@@ -127,7 +133,7 @@
 		B0CD772729FC3BD700972E8D /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				B0391C932A05731700A7D450 /* PagerContainer.swift */,
+				B086016D2A0E8D9400459609 /* PagerContainers */,
 				B0CD772B29FC43CE00972E8D /* VCS */,
 				B0CD772A29FC3D0200972E8D /* Cells */,
 			);
@@ -165,7 +171,6 @@
 				B0391C952A057D8900A7D450 /* HeroComicsVC.swift */,
 				B0E6BCF32A0D66D70040C5FA /* HeroStoriesVC.swift */,
 				B0E6BCED2A0D5A740040C5FA /* HeroSeriesVC.swift */,
-				B0E6BCEB2A0D317E0040C5FA /* HeroesDetailPagerVC.swift */,
 				B0CD772C29FC43F600972E8D /* HeroDetailVC.swift */,
 			);
 			path = VCS;
@@ -255,7 +260,6 @@
 				B05FDAB02A041B880097D064 /* View.swift in Sources */,
 				B0391C942A05731700A7D450 /* PagerContainer.swift in Sources */,
 				B0E6BCF22A0D662A0040C5FA /* ApiRepo+Stories.swift in Sources */,
-				B0E6BCEC2A0D317E0040C5FA /* HeroesDetailPagerVC.swift in Sources */,
 				B050900829FAC6EC00A3AC7E /* HeroeCell.swift in Sources */,
 				B0B6866229F1A44E00A56445 /* SceneDelegate.swift in Sources */,
 				B0CD772D29FC43F600972E8D /* HeroDetailVC.swift in Sources */,

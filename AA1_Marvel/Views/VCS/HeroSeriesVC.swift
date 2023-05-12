@@ -10,6 +10,7 @@ import UIKit
 class HeroSeriesVC: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     var GetSeriesInProgress: Bool = false
     var seriesLoaded: [MarvelRepository.HeroesContent] = []
+    var totalResults: Int = 0
     
     @IBOutlet weak var collection: UICollectionView!
     
@@ -39,7 +40,7 @@ class HeroSeriesVC: UIViewController, UICollectionViewDataSource, UICollectionVi
             cell.mImage.SetImageAsync(url: imageUrl)
         }
         
-        if(indexPath.row + 5 >= seriesLoaded.count)
+        if(seriesLoaded.count < self.totalResults && indexPath.row + 5 >= seriesLoaded.count)
         {
             GetMoreSeries()
         }
@@ -57,10 +58,11 @@ extension HeroSeriesVC {
         {
             GetSeriesInProgress = true;
             
-            Api.Marvel.GetSeries(offset: 3, limit: 30, characterId: HeroDetailVC.CurrHero?.id ?? 0) { series in
-                debugPrint(series)
+            Api.Marvel.GetSeries(offset: 3, limit: 30, characterId: HeroDetailVC.CurrHero?.id ?? 0) { seriesData in
+                debugPrint(seriesData.results)
                 self.GetSeriesInProgress = false
-                self.seriesLoaded.insert(contentsOf: series, at: self.seriesLoaded.count)
+                self.totalResults = seriesData.total
+                self.seriesLoaded.insert(contentsOf: seriesData.results, at: self.seriesLoaded.count)
                 self.collection.reloadData()
             } onError: { error in
                 self.GetSeriesInProgress = false;

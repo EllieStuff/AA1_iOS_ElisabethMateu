@@ -20,7 +20,7 @@ extension MarvelRepository {
         let error: HeroErrors
     }
     
-    func GetHeroes(offset: Int = 0, limit: Int = 20, filter: String = "", onSuccess: @escaping ([Hero]) -> (), onError: @escaping (HeroError)->() = {_ in } )
+    func GetHeroes(offset: Int = 0, limit: Int = 20, filter: String = "", onSuccess: @escaping (HeroesData) -> (), onError: @escaping (HeroError)->() = {_ in } )
     {
         var marvelComponents = MarvelURLComponents()
         
@@ -31,7 +31,7 @@ extension MarvelRepository {
         if(filter != "") { marvelComponents.AddFilter(filter: filter) }
         
         
-        //MarvelRepository.GetApiData<Hero>(urlComponent: marvelComponents, onSuccess: onSuccess, onError: onError)
+        //MarvelRepository.GetApiData(urlComponent: marvelComponents, onSuccess: onSuccess, onError: onError)
         guard let url = marvelComponents.Components.url else {
             onError(HeroError(error: .CantCreateUrl))
             return
@@ -65,7 +65,7 @@ extension MarvelRepository {
                 DispatchQueue.main.async {
                     //debugPrint("Heroes Response:")
                     //debugPrint(heroesResponse.data.results)
-                    onSuccess(heroesResponse.data.results)
+                    onSuccess(heroesResponse.data)
                 }
             
             }
@@ -86,6 +86,7 @@ struct HeroesResponse: Decodable, Encodable {
 
 struct HeroesData: Decodable, Encodable {
     let results: [Hero]
+    let total: Int
 }
 
 struct Hero: Decodable, Encodable {
