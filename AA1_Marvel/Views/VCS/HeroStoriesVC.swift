@@ -63,7 +63,7 @@ extension HeroStoriesVC {
             Api.Marvel.GetStories(offset: 3, limit: 30, characterId: HeroDetailVC.CurrHero?.id ?? 0) { stories in
                 debugPrint(stories)
                 self.GetStoriesInProgress = false
-                self.storiesLoaded.insert(contentsOf: stories, at: self.storiesLoaded.count)
+                self.storiesLoaded.insert(contentsOf: stories.results, at: self.storiesLoaded.count)
                 self.collection.reloadData()
             } onError: { error in
                 self.GetStoriesInProgress = false;

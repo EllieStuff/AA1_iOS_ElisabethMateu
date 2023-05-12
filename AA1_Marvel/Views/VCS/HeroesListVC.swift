@@ -97,15 +97,6 @@ extension HeroesListVC {
         {
             GetHeroesInProgress = true;
             
-            /*Api.Marvel.GetHeroes(offset: heroesLoaded.count, limit: 30, filter: searchedText) { heroes in
-                self.GetHeroesInProgress = false
-                self.heroesLoaded.insert(contentsOf: heroes, at: self.heroesLoaded.count)
-                self.table.reloadData()
-            } onError: { error in
-                self.GetHeroesInProgress = false;
-                debugPrint(error.error.rawValue)
-            }*/
-            
             Api.Marvel.GetHeroes(offset: heroesLoaded.count, limit: 30, filter: searchedText, onSuccess: OnSucces, onError: OnError)
             
         }

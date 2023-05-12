@@ -10,17 +10,20 @@ import UIKit
 
 class PagerContainer : UIPageViewController {
     
-    var vcs: [UIViewController] = []
+    var vcs: [HeroesContentVC] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         
-        let firstVC = storyboard.instantiateViewController(identifier: "Comics")
+        let firstVC = storyboard.instantiateViewController(identifier: "Comics") as HeroesContentVC
         vcs.append(firstVC)
-        vcs.append(storyboard.instantiateViewController(identifier: "Series"))
-        vcs.append(storyboard.instantiateViewController(identifier: "Stories"))
+        vcs[0].contentType = .Comics
+        vcs.append(storyboard.instantiateViewController(identifier: "Series") as HeroesContentVC)
+        vcs[1].contentType = .Series
+        vcs.append(storyboard.instantiateViewController(identifier: "Stories") as HeroesContentVC)
+        vcs[2].contentType = .Stories
         
         self.delegate = self
         self.dataSource = self
@@ -34,7 +37,9 @@ class PagerContainer : UIPageViewController {
 extension PagerContainer: UIPageViewControllerDataSource, UIPageViewControllerDelegate {
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
-        guard let idx = vcs.firstIndex(of: viewController) else {
+        guard let vc = viewController as? HeroesContentVC else { return nil }
+        
+        guard let idx = vcs.firstIndex(of: vc) else {
             return nil
         }
         
@@ -47,7 +52,10 @@ extension PagerContainer: UIPageViewControllerDataSource, UIPageViewControllerDe
     }
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
-        guard let idx = vcs.firstIndex(of: viewController) else {
+        
+        guard let vc = viewController as? HeroesContentVC else { return nil }
+        
+        guard let idx = vcs.firstIndex(of: vc) else {
             return nil
         }
         

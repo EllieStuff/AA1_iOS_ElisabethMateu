@@ -9,7 +9,7 @@ import Foundation
 
 extension MarvelRepository {
     
-    func GetStories(offset: Int = 0, limit: Int = 20, characterId: Int, onSuccess: @escaping ([HeroesContent]) -> (), onError: @escaping (HeroError)->() = {_ in } )
+    func GetStories(offset: Int = 0, limit: Int = 20, characterId: Int, onSuccess: @escaping (HeroesContentData) -> (), onError: @escaping (HeroError)->() = {_ in } )
     {
         debugPrint("Character Id: " + String(characterId))
         var marvelComponents = MarvelURLComponents()
@@ -55,7 +55,7 @@ extension MarvelRepository {
                 DispatchQueue.main.async {
                     //debugPrint("Heroes Response:")
                     //debugPrint(heroesResponse.data.results)
-                    onSuccess(storiesResponse.data.results)
+                    onSuccess(storiesResponse.data)
                 }
             
             }

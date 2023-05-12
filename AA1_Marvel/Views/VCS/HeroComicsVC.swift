@@ -62,7 +62,7 @@ extension HeroComicsVC {
             Api.Marvel.GetComics(offset: 3, limit: 30, characterId: HeroDetailVC.CurrHero?.id ?? 0) { comics in
                 debugPrint(comics)
                 self.GetComicsInProgress = false
-                self.comicsLoaded.insert(contentsOf: comics, at: self.comicsLoaded.count)
+                self.comicsLoaded.insert(contentsOf: comics.results, at: self.comicsLoaded.count)
                 self.collection.reloadData()
             } onError: { error in
                 self.GetComicsInProgress = false;
