@@ -30,9 +30,6 @@ class HeroDetailVC: UIViewController {
             heroeImage.SetImageAsync(url: imageUrl)
         }
         
-        //collection.dataSource = self
-        //collection.delegate = self
-        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -40,6 +37,10 @@ class HeroDetailVC: UIViewController {
         if let pager = segue.destination as? PagerContainer {
             self.pager = pager
         }
+    }
+    
+    @IBAction func goBack(_ sender: Any) {
+        dismiss(animated: true)
     }
     
     

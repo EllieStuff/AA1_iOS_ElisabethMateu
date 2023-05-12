@@ -105,8 +105,6 @@
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="inputBegin:" destination="BYZ-38-t0r" eventType="editingDidBegin" id="91K-CF-h4R"/>
-                                    <action selector="inputChange:" destination="BYZ-38-t0r" eventType="editingChanged" id="1yS-GQ-ilr"/>
-                                    <action selector="inputEnd:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="4jE-37-iAZ"/>
                                 </connections>
                             </textField>
                         </subviews>
@@ -184,12 +182,34 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w2C-lx-3RE">
+                                        <rect key="frame" x="-2" y="-2" width="43.666666666666664" height="35"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="35" id="MYc-Iy-FQd"/>
+                                            <constraint firstAttribute="width" secondItem="w2C-lx-3RE" secondAttribute="height" multiplier="5:4" id="SZW-ek-nZX"/>
+                                        </constraints>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="gray" image="chevron.backward" catalog="system">
+                                            <color key="baseForegroundColor" systemColor="labelColor"/>
+                                            <color key="baseBackgroundColor" systemColor="systemGray3Color"/>
+                                        </buttonConfiguration>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="4"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="goBack:" destination="bUH-kv-YNJ" eventType="touchUpInside" id="GDr-e2-iHi"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemGray5Color"/>
                                 <constraints>
+                                    <constraint firstItem="w2C-lx-3RE" firstAttribute="top" secondItem="Pcw-Rr-enn" secondAttribute="top" constant="-2" id="F52-VO-6hL"/>
                                     <constraint firstAttribute="trailing" secondItem="asH-ZL-H7o" secondAttribute="trailing" constant="50" id="HyF-uK-M52"/>
                                     <constraint firstAttribute="height" priority="750" constant="300" id="Kew-XS-SVm"/>
                                     <constraint firstItem="qml-kg-beZ" firstAttribute="leading" secondItem="Pcw-Rr-enn" secondAttribute="leading" constant="10" id="MO7-nA-5eD"/>
+                                    <constraint firstItem="w2C-lx-3RE" firstAttribute="leading" secondItem="Pcw-Rr-enn" secondAttribute="leading" constant="-2" id="Ryf-lB-5DB"/>
                                     <constraint firstAttribute="trailing" secondItem="9yx-RK-rJO" secondAttribute="trailing" constant="10" id="YiV-WT-Rrj"/>
                                     <constraint firstAttribute="bottom" secondItem="9yx-RK-rJO" secondAttribute="bottom" constant="10" id="gKE-PW-cA2"/>
                                     <constraint firstItem="9yx-RK-rJO" firstAttribute="top" secondItem="asH-ZL-H7o" secondAttribute="bottom" constant="10" id="h64-Pz-TVS"/>
@@ -538,6 +558,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="chevron.backward" catalog="system" width="97" height="128"/>
         <image name="magnifyingglass" catalog="system" width="128" height="117"/>
         <systemColor name="labelColor">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -550,6 +571,9 @@
         </systemColor>
         <systemColor name="systemCyanColor">
             <color red="0.19607843137254902" green="0.67843137254901964" blue="0.90196078431372551" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemGray3Color">
+            <color red="0.7803921568627451" green="0.7803921568627451" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGray4Color">
             <color red="0.81960784313725488" green="0.81960784313725488" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

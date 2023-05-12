@@ -64,15 +64,10 @@ class HeroesListVC: UIViewController, UITableViewDataSource, UITableViewDelegate
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //debugPrint("Hero selected => \(heroesLoaded[indexPath.row].name)")
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         if let heroDetailVC = storyboard.instantiateViewController(withIdentifier: "HeroDetail") as? HeroDetailVC {
             HeroDetailVC.CurrHero = heroesLoaded[indexPath.row]
-            
-            ///Si se pone esta linea la pantalla ocupara toda la pantalla
-            //heroDetailVC.modalPresentationStyle = .overFullScreen
-            ///En caso de querer volver atras hay que poner un boton que llame la funcion dismissed
-            
+            heroDetailVC.modalPresentationStyle = .overFullScreen
             
             self.present(heroDetailVC, animated: true)
         }
@@ -83,12 +78,6 @@ class HeroesListVC: UIViewController, UITableViewDataSource, UITableViewDelegate
         if(searchField.text == "Search") { searchField.text = "" }
     }
     
-    @IBAction func inputEnd(_ sender: Any) {
-        //searchedText = self.searchField.text ?? ""
-    }
-    @IBAction func inputChange(_ sender: Any) {
-        //searchedText = self.searchField.text ?? ""
-    }
     
     @IBAction func searchBttnTouchUp(_ sender: Any) {
         if(self.searchField.text == nil) { return }
@@ -133,16 +122,6 @@ extension HeroesListVC {
         self.GetHeroesInProgress = false;
         debugPrint(error.error.rawValue)
         
-        /*switch(error.error) {
-        case .CantCreateUrlWithString:
-            <#code#>
-        case .CantCreateUrl:
-            <#code#>
-        case .Unknown:
-            <#code#>
-        case .CantParseData:
-            <#code#>
-        }*/
     }
     
 }
