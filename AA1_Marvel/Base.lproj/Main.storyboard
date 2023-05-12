@@ -149,7 +149,8 @@
                                         <rect key="frame" x="10" y="10" width="353" height="100"/>
                                         <color key="backgroundColor" systemColor="systemGray4Color"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="100" id="wA4-q1-9EZ"/>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="R5E-XA-9bz"/>
+                                            <constraint firstAttribute="height" priority="750" constant="100" id="wA4-q1-9EZ"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -172,9 +173,12 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </label>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="9yx-RK-rJO" userLabel="Hero Description">
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="9yx-RK-rJO" userLabel="Hero Description">
                                         <rect key="frame" x="10" y="138" width="353" height="152"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="60" id="zkj-ED-q5F"/>
+                                        </constraints>
                                         <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                         <color key="textColor" systemColor="labelColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -184,7 +188,7 @@
                                 <color key="backgroundColor" systemColor="systemGray5Color"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="asH-ZL-H7o" secondAttribute="trailing" constant="50" id="HyF-uK-M52"/>
-                                    <constraint firstAttribute="height" constant="300" id="Kew-XS-SVm"/>
+                                    <constraint firstAttribute="height" priority="750" constant="300" id="Kew-XS-SVm"/>
                                     <constraint firstItem="qml-kg-beZ" firstAttribute="leading" secondItem="Pcw-Rr-enn" secondAttribute="leading" constant="10" id="MO7-nA-5eD"/>
                                     <constraint firstAttribute="trailing" secondItem="9yx-RK-rJO" secondAttribute="trailing" constant="10" id="YiV-WT-Rrj"/>
                                     <constraint firstAttribute="bottom" secondItem="9yx-RK-rJO" secondAttribute="bottom" constant="10" id="gKE-PW-cA2"/>
@@ -196,7 +200,7 @@
                                     <constraint firstItem="asH-ZL-H7o" firstAttribute="top" secondItem="qml-kg-beZ" secondAttribute="bottom" constant="-15" id="yt6-iO-NMj"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wPU-M4-RDf">
+                            <view contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="wPU-M4-RDf">
                                 <rect key="frame" x="10" y="379" width="373" height="429"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="9uP-h0-MXL">
@@ -225,7 +229,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rRK-7D-VGf">
-                                                <rect key="frame" x="235.66666666666666" y="0.0" width="117.33333333333334" height="30"/>
+                                                <rect key="frame" x="235.66666666666663" y="0.0" width="117.33333333333334" height="30"/>
                                                 <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" title="Stories"/>
@@ -256,6 +260,7 @@
                                     <constraint firstAttribute="trailing" secondItem="9uP-h0-MXL" secondAttribute="trailing" constant="10" id="m3u-rg-UeW"/>
                                     <constraint firstItem="9uP-h0-MXL" firstAttribute="top" secondItem="wPU-M4-RDf" secondAttribute="top" constant="10" id="oJK-Ii-qvv"/>
                                     <constraint firstItem="9uP-h0-MXL" firstAttribute="leading" secondItem="wPU-M4-RDf" secondAttribute="leading" constant="10" id="sEv-s7-jkb"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="200" id="wzZ-Ld-kNQ"/>
                                 </constraints>
                             </view>
                         </subviews>
