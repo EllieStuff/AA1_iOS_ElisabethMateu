@@ -8,13 +8,13 @@
 import Foundation
 
 class MarvelRepository {
-    /*static func GetApiData<T: Decodable>(urlComponent: MarvelURLComponents, onSuccess: @escaping (T) -> (), onError: @escaping (HeroError)->() = {_ in } ) {
+    static func GetApiData<T: Decodable>(urlComponent: MarvelURLComponents, onSuccess: @escaping (T) -> (), onError: @escaping (HeroError)->() = {_ in } ) {
         guard let url = urlComponent.Components.url else {
             onError(HeroError(error: .CantCreateUrl))
             return
         }
         
-        var request = URLRequest(url: url)
+        let request = URLRequest(url: url)
         
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             
@@ -25,14 +25,14 @@ class MarvelRepository {
                 return
             }
             
-            if let data = data , let jsonStr = String(data:data, encoding: .utf8){
-                debugPrint("Heroes Response:")
+            if let data = data /*, let jsonStr = String(data:data, encoding: .utf8)*/ {
+                //debugPrint("Heroes Response:")
                 //debugPrint(jsonStr)
                 
-                var jsonDict = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
-                debugPrint(jsonDict)
+                //var jsonDict = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
+                //debugPrint(jsonDict)
                 
-                guard let heroesResponse = try? JSONDecoder().decode(HeroesResponse.self, from: data) else {
+                guard let tResponse = try? JSONDecoder().decode(T.self, from: data) else {
                     DispatchQueue.main.async {
                         onError(HeroError(error: .CantParseData))
                     }
@@ -40,16 +40,14 @@ class MarvelRepository {
                 }
                 
                 DispatchQueue.main.async {
-                    //debugPrint("Heroes Response:")
-                    //debugPrint(heroesResponse.data.results)
-                    onSuccess(heroesResponse.data)
+                    onSuccess(tResponse)
                 }
             
             }
         }
             
         task.resume()
-    }*/
+    }
     
     public class MarvelURLComponents {
         

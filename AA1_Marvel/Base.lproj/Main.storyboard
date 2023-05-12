@@ -18,10 +18,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0y8-NZ-A97">
-                                <rect key="frame" x="338" y="69" width="45" height="36"/>
+                                <rect key="frame" x="333.33333333333331" y="69" width="49.666666666666686" height="39.666666666666657"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="0y8-NZ-A97" secondAttribute="height" multiplier="5:4" id="Fgj-Ri-Ne1"/>
-                                    <constraint firstAttribute="width" constant="45" id="Tsq-gj-Zf2"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="45" id="Tsq-gj-Zf2"/>
+                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="100" id="UdQ-9G-t9n"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="gray" image="magnifyingglass" catalog="system"/>
@@ -35,7 +36,7 @@
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="140" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="GSY-qe-Q9E">
-                                <rect key="frame" x="10" y="115" width="373" height="703"/>
+                                <rect key="frame" x="10" y="118.66666666666669" width="373" height="699.33333333333326"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="HeroeCell" id="0hb-LQ-Oja" customClass="HeroeCell" customModule="AA1_Marvel" customModuleProvider="target">
@@ -94,8 +95,8 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </tableView>
-                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Search" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pw4-9K-Qwa">
-                                <rect key="frame" x="10" y="69" width="318" height="36"/>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pw4-9K-Qwa">
+                                <rect key="frame" x="10" y="69" width="313.33333333333331" height="39.666666666666657"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <userDefinedRuntimeAttributes>
@@ -103,9 +104,6 @@
                                         <real key="value" value="5"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="inputBegin:" destination="BYZ-38-t0r" eventType="editingDidBegin" id="91K-CF-h4R"/>
-                                </connections>
                             </textField>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -118,6 +116,7 @@
                             <constraint firstItem="GSY-qe-Q9E" firstAttribute="top" secondItem="pw4-9K-Qwa" secondAttribute="bottom" constant="10" id="K8p-8P-ezn"/>
                             <constraint firstItem="GSY-qe-Q9E" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="LQS-kd-2uh"/>
                             <constraint firstItem="GSY-qe-Q9E" firstAttribute="top" secondItem="0y8-NZ-A97" secondAttribute="bottom" constant="10" id="PKp-Fv-mhO"/>
+                            <constraint firstItem="pw4-9K-Qwa" firstAttribute="height" secondItem="0y8-NZ-A97" secondAttribute="height" id="TxM-lc-B8i"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="GSY-qe-Q9E" secondAttribute="trailing" constant="10" id="gwh-k5-kvd"/>
                             <constraint firstItem="0y8-NZ-A97" firstAttribute="leading" secondItem="pw4-9K-Qwa" secondAttribute="trailing" constant="10" id="j52-T5-c2x"/>
                             <constraint firstItem="0y8-NZ-A97" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="yVS-TQ-xqT"/>
@@ -207,7 +206,7 @@
                                 <constraints>
                                     <constraint firstItem="w2C-lx-3RE" firstAttribute="top" secondItem="Pcw-Rr-enn" secondAttribute="top" constant="-2" id="F52-VO-6hL"/>
                                     <constraint firstAttribute="trailing" secondItem="asH-ZL-H7o" secondAttribute="trailing" constant="50" id="HyF-uK-M52"/>
-                                    <constraint firstAttribute="height" priority="750" constant="300" id="Kew-XS-SVm"/>
+                                    <constraint firstAttribute="height" constant="300" id="Kew-XS-SVm"/>
                                     <constraint firstItem="qml-kg-beZ" firstAttribute="leading" secondItem="Pcw-Rr-enn" secondAttribute="leading" constant="10" id="MO7-nA-5eD"/>
                                     <constraint firstItem="w2C-lx-3RE" firstAttribute="leading" secondItem="Pcw-Rr-enn" secondAttribute="leading" constant="-2" id="Ryf-lB-5DB"/>
                                     <constraint firstAttribute="trailing" secondItem="9yx-RK-rJO" secondAttribute="trailing" constant="10" id="YiV-WT-Rrj"/>
@@ -220,7 +219,7 @@
                                     <constraint firstItem="asH-ZL-H7o" firstAttribute="top" secondItem="qml-kg-beZ" secondAttribute="bottom" constant="-15" id="yt6-iO-NMj"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="wPU-M4-RDf">
+                            <view contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="wPU-M4-RDf" userLabel="HeroContentV">
                                 <rect key="frame" x="10" y="379" width="373" height="429"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="9uP-h0-MXL">

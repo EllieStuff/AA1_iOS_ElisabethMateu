@@ -9,6 +9,11 @@ import Foundation
 import UIKit
 
 class PagerContainer : UIPageViewController {
+    enum VCS: Int {
+        case ComicsId = 0
+        case SeriesId = 1
+        case StoriesId = 2
+    }
     
     var vcs: [HeroesContentVC] = []
     
@@ -19,11 +24,11 @@ class PagerContainer : UIPageViewController {
         
         let firstVC = storyboard.instantiateViewController(identifier: "Comics") as HeroesContentVC
         vcs.append(firstVC)
-        vcs[0].contentType = .Comics
+        vcs[VCS.ComicsId.rawValue].contentType = .Comics
         vcs.append(storyboard.instantiateViewController(identifier: "Series") as HeroesContentVC)
-        vcs[1].contentType = .Series
+        vcs[VCS.SeriesId.rawValue].contentType = .Series
         vcs.append(storyboard.instantiateViewController(identifier: "Stories") as HeroesContentVC)
-        vcs[2].contentType = .Stories
+        vcs[VCS.StoriesId.rawValue].contentType = .Stories
         
         self.delegate = self
         self.dataSource = self
@@ -35,7 +40,6 @@ class PagerContainer : UIPageViewController {
 
 
 extension PagerContainer: UIPageViewControllerDataSource, UIPageViewControllerDelegate {
-    
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
         guard let vc = viewController as? HeroesContentVC else { return nil }
         
@@ -72,19 +76,17 @@ extension PagerContainer: UIPageViewControllerDataSource, UIPageViewControllerDe
     
     func SetComicsVC()
     {
-        self.setViewControllers([vcs[0]], direction: .forward, animated: true)
-        //var comicsView:HeroComicsVC? = vcs[0] as? HeroComicsVC
-        //comicsView?.HeroComicsVC()
+        self.setViewControllers([vcs[VCS.ComicsId.rawValue]], direction: .forward, animated: true)
     }
         
     func SetSeriesVC()
     {
-        self.setViewControllers([vcs[1]], direction: .forward, animated: true)
+        self.setViewControllers([vcs[VCS.SeriesId.rawValue]], direction: .forward, animated: true)
     }
     
     func SetStoriesVC()
     {
-        self.setViewControllers([vcs[2]], direction: .forward, animated: true)
+        self.setViewControllers([vcs[VCS.StoriesId.rawValue]], direction: .forward, animated: true)
     }
     
 }

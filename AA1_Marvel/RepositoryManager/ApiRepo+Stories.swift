@@ -9,10 +9,9 @@ import Foundation
 
 extension MarvelRepository {
     
-    func GetStories(offset: Int = 0, limit: Int = 20, characterId: Int, onSuccess: @escaping (HeroesContentData) -> (), onError: @escaping (HeroError)->() = {_ in } )
+    func GetStories(offset: Int = 0, limit: Int = 20, characterId: Int, onSuccess: @escaping (HeroesContentResponse) -> (), onError: @escaping (HeroError)->() = {_ in } )
     {
-        debugPrint("Character Id: " + String(characterId))
-        var marvelComponents = MarvelURLComponents()
+        let marvelComponents = MarvelURLComponents()
         
         marvelComponents
             .AddToPath(.Stories)
@@ -21,47 +20,7 @@ extension MarvelRepository {
             .AddCharacterId(characterId: characterId)
         
         
-        //MarvelRepository.GetApiData(urlComponent: marvelComponents, onSuccess: onSuccess, onError: onError)
-        guard let url = marvelComponents.Components.url else {
-            onError(HeroError(error: .CantCreateUrl))
-            return
-        }
-        
-        var request = URLRequest(url: url)
-        
-        let task = URLSession.shared.dataTask(with: request) { data, response, error in
-            
-            if error != nil {
-                DispatchQueue.main.async {
-                    onError(HeroError(error: .Unknown))
-                }
-                return
-            }
-            
-            if let data = data , let jsonStr = String(data:data, encoding: .utf8){
-                debugPrint("Stories Response:")
-                //debugPrint(jsonStr)
-                
-                var jsonDict = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
-                debugPrint(jsonDict)
-                
-                guard let storiesResponse = try? JSONDecoder().decode(HeroesContentResponse.self, from: data) else {
-                    DispatchQueue.main.async {
-                        onError(HeroError(error: .CantParseData))
-                    }
-                    return
-                }
-                
-                DispatchQueue.main.async {
-                    //debugPrint("Heroes Response:")
-                    //debugPrint(heroesResponse.data.results)
-                    onSuccess(storiesResponse.data)
-                }
-            
-            }
-        }
-            
-        task.resume()
+        MarvelRepository.GetApiData(urlComponent: marvelComponents, onSuccess: onSuccess, onError: onError)
         
     }
 

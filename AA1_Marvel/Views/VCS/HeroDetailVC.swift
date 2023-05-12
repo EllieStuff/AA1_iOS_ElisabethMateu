@@ -33,7 +33,7 @@ class HeroDetailVC: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        debugPrint(segue.identifier)
+        //debugPrint(segue.identifier)
         if let pager = segue.destination as? PagerContainer {
             self.pager = pager
         }

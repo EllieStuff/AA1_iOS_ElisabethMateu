@@ -77,10 +77,10 @@ extension HeroesContentVC {
         }
     }
     
-    func OnSucces(contentData: MarvelRepository.HeroesContentData) {
+    func OnSucces(contentResponse: MarvelRepository.HeroesContentResponse) {
         self.GetLoadingContentInProgress = false
-        self.totalResults = contentData.total
-        self.contentLoaded.insert(contentsOf: contentData.results, at: self.contentLoaded.count)
+        self.totalResults = contentResponse.data.total
+        self.contentLoaded.insert(contentsOf: contentResponse.data.results, at: self.contentLoaded.count)
         self.collection.reloadData()
     }
     

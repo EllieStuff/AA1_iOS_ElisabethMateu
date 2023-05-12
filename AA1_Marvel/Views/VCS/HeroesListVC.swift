@@ -9,6 +9,8 @@ import UIKit
 
 class HeroesListVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
+    let cellSize: CGFloat = 120.0
+    
     var heroesLoaded: [Hero] = []
     var GetHeroesInProgress: Bool = false
     var searchedText: String = ""
@@ -38,15 +40,11 @@ class HeroesListVC: UIViewController, UITableViewDataSource, UITableViewDelegate
             return UITableViewCell()
         }
         
-        //cell.title.text = "Movie: " + movies[indexPath.row]
-        //cell.mImage.image = UIImage(named: movies[indexPath.row])
-        //cell.bt.addTarget(self, action: #selector(":PrintHola"), for: .touchUpInside)
-        
         
         cell.title.text = heroesLoaded[indexPath.row].name
             
         cell.mDescription.text = heroesLoaded[indexPath.row].description
-        if(cell.mDescription.text == "") { cell.mDescription.text = "No description available." }
+        if(cell.mDescription.text == "") { cell.mDescription.text = "No description available." }
         if let imageUrl = self.heroesLoaded[indexPath.row].thumbnail?.Url {
             cell.mImage.SetImageAsync(url: imageUrl)
         }
@@ -60,7 +58,7 @@ class HeroesListVC: UIViewController, UITableViewDataSource, UITableViewDelegate
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 120.0
+        return cellSize
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -71,11 +69,6 @@ class HeroesListVC: UIViewController, UITableViewDataSource, UITableViewDelegate
             
             self.present(heroDetailVC, animated: true)
         }
-    }
-    
-    
-    @IBAction func inputBegin(_ sender: Any) {
-        if(searchField.text == "Search") { searchField.text = "" }
     }
     
     
@@ -102,10 +95,10 @@ extension HeroesListVC {
         }
     }
     
-    func OnSucces(heroesData: HeroesData) {
+    func OnSucces(heroesResponse: HeroesResponse) {
         self.GetHeroesInProgress = false
-        self.totalHeroes = heroesData.total
-        self.heroesLoaded.insert(contentsOf: heroesData.results, at: self.heroesLoaded.count)
+        self.totalHeroes = heroesResponse.data.total
+        self.heroesLoaded.insert(contentsOf: heroesResponse.data.results, at: self.heroesLoaded.count)
         if(heroesLoaded.count > 0) { self.table.reloadData() }
     }
     
